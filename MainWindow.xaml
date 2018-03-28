@@ -1,0 +1,188 @@
+﻿<Window x:Class="VegaBiosEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VegaBiosEditor"
+        mc:Ignorable="d"
+        Title="RX Vega Bios Reader By VASKE" Height="500" Width="800" ResizeMode="CanMinimize">
+    <Grid>
+        <Button Content="OPEN" Width="60"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Click="OpenFileDialog_Click" />
+        <Button Content="OPTIONS" Width="60"  HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,12,0" Click="OpenOptionsDialog_Click" />
+        <ScrollViewer  HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0, 45,0,0" Width="770" Height="415">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <GroupBox Header="ATOM ROM HEADER">
+                    <Grid>
+                        <Grid Margin="10" Background="LightGray">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" TextAlignment="Center" Text="NAME" />
+                                <TextBlock Grid.Column="1" TextAlignment="Center" Text="HEX VALUE" />
+                                <TextBlock Grid.Column="2" TextAlignment="Center" Text="INT VALUE" />
+                            </Grid>
+                            <ListView x:Name="ROM_HEADER" Grid.Row="1" VirtualizingStackPanel.IsVirtualizing="False">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock x:Name="NAME" Text="{Binding NAME, Mode=OneWay}" FontSize="10" TextAlignment="Left"  Grid.Column="0"/>
+                                            <TextBox x:Name="VALUE" Text="{Binding VALUE, Mode=OneWay}" FontSize="10" TextAlignment="Left" Grid.Column="1"/>
+                                            <TextBox x:Name="RAWVALUE" Text="{Binding RAWVALUE, Mode=OneWay}" FontSize="10" TextAlignment="Left" Grid.Column="2"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="ATOM DATA TABLES" Grid.Row="1">
+                    <Grid>
+                        <Grid Margin="10" Background="LightGray">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" TextAlignment="Center" Text="NAME" />
+                                <TextBlock Grid.Column="1" TextAlignment="Center" Text="HEX VALUE" />
+                                <TextBlock Grid.Column="2" TextAlignment="Center" Text="INT VALUE" />
+                            </Grid>
+                            <ListView x:Name="DATA_TABLES" Grid.Row="1" VirtualizingStackPanel.IsVirtualizing="False">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock x:Name="NAME" Text="{Binding NAME, Mode=OneWay}" FontSize="10" TextAlignment="Left"  Grid.Column="0"/>
+                                            <TextBox x:Name="VALUE" Text="{Binding VALUE, Mode=OneWay}" FontSize="10" TextAlignment="Left" Grid.Column="1"/>
+                                            <TextBox x:Name="RAWVALUE" Text="{Binding RAWVALUE, Mode=OneWay}" FontSize="10" TextAlignment="Left" Grid.Column="2"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="ATOM POWERPLAY TABLE" Grid.Row="2">
+                    <Grid>
+                        <Grid Margin="10" Background="LightGray">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" TextAlignment="Center" Text="NAME" />
+                                <TextBlock Grid.Column="1" TextAlignment="Center" Text="HEX VALUE" />
+                                <TextBlock Grid.Column="2" TextAlignment="Center" Text="INT VALUE" />
+                            </Grid>
+                            <ListView x:Name="POWERPLAY_TABLE" Grid.Row="1" VirtualizingStackPanel.IsVirtualizing="False">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock x:Name="NAME" Text="{Binding NAME, Mode=OneWay}" FontSize="10" TextAlignment="Left"  Grid.Column="0"/>
+                                            <TextBox x:Name="VALUE" Text="{Binding VALUE, Mode=OneWay}" FontSize="10" TextAlignment="Left" Grid.Column="1"/>
+                                            <TextBox x:Name="RAWVALUE" Text="{Binding RAWVALUE, Mode=OneWay}" FontSize="10" TextAlignment="Left" Grid.Column="2"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="ATOM FAN TABLE" Grid.Row="3">
+                    <Grid>
+                        <Grid Margin="10" Background="LightGray">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" TextAlignment="Center" Text="NAME" />
+                                <TextBlock Grid.Column="1" TextAlignment="Center" Text="HEX VALUE" />
+                                <TextBlock Grid.Column="2" TextAlignment="Center" Text="INT VALUE" />
+                            </Grid>
+                            <ListView x:Name="FAN_TABLE" Grid.Row="1" VirtualizingStackPanel.IsVirtualizing="False">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock x:Name="NAME" Text="{Binding NAME, Mode=OneWay}" FontSize="10" TextAlignment="Left"  Grid.Column="0"/>
+                                            <TextBox x:Name="VALUE" Text="{Binding VALUE, Mode=OneWay}" FontSize="10" TextAlignment="Left" Grid.Column="1"/>
+                                            <TextBox x:Name="RAWVALUE" Text="{Binding RAWVALUE, Mode=OneWay}" FontSize="10" TextAlignment="Left" Grid.Column="2"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
+</Window>
