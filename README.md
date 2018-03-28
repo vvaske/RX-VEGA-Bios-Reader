@@ -1,1 +1,1 @@
-# RX-VEGA-Bios-Reader
+# RX-Vega Bios Editor/Reader
